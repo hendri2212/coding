@@ -12,14 +12,15 @@
 <body class="container">
     <h2 class="text-center bg-warning py-2">APLIKASI DATA SISWA</h2>
     <div class="mb-3">
-        <a href="index.php">Home</a>
-        <a href="siswa.php">Data Siswa</a>
+        <a href="index.php" class="bg-danger p-2 mr-2 text-white">Home</a>
+        <a href="siswa.php" class="bg-danger p-2 mr-2 text-white">Data Siswa</a>
+        <a href="guru.php" class="bg-danger p-2 mr-2 text-white">Data Guru</a>
     </div>
 
     <?php
         include "./config.php";
+        $query = mysqli_query($koneksi, 'SELECT data_siswa.id, nama_siswa, nama_kelas, no_hp, alamat FROM data_siswa JOIN data_kelas ON data_siswa.kelas_id = data_kelas.id') ?>
 
-        $query = mysqli_query($koneksi, 'SELECT * FROM data_siswa JOIN data_kelas ON data_siswa.kelas_id = data_kelas.id') ?>
         <a href="input.php" class="btn btn-info">Data Baru</a> <br><br>
         <table class="table table-bordered">
             <thead>
@@ -42,8 +43,8 @@
                     <td><?= $data['alamat'] ?></td>
                     <td>
                         <div class="btn-group">
-                            <input type="button" value="Edit" class="btn btn-success">
-                            <input type="button" value="Delete" class="btn btn-danger">
+                            <a href="edit.php?id=<?= $data['id'] ?>" class="btn btn-success">Edit</a>
+                            <a href='delete.php?id=<?= $data['id'] ?>' class="btn btn-danger">Delete</a>
                         </div>
                     </td>
                 </tr>
