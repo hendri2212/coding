@@ -12,9 +12,9 @@
 <body class="container">
     <h2 class="text-center bg-warning py-2">APLIKASI DATA SISWA</h2>
     <div class="mb-3">
-        <a href="index.php" class="bg-danger p-2 mr-2 text-white">Home</a>
-        <a href="siswa.php" class="bg-danger p-2 mr-2 text-white">Data Siswa</a>
-        <a href="guru.php" class="bg-danger p-2 mr-2 text-white">Data Guru</a>
+        <a href="index.php" class="bg-danger p-2 mr-2 text-decoration-none text-white">Home</a>
+        <a href="kelas.php" class="bg-danger p-2 mr-2 text-decoration-none text-white">Data Kelas</a>
+        <a href="guru.php" class="bg-danger p-2 mr-2 text-decoration-none text-white">Data Guru</a>
     </div>
 
     <?php
@@ -44,7 +44,7 @@
                     <td>
                         <div class="btn-group">
                             <a href="edit.php?id=<?= $data['id'] ?>" class="btn btn-success">Edit</a>
-                            <a href='delete.php?id=<?= $data['id'] ?>' class="btn btn-danger">Delete</a>
+                            <a href="delete.php?id=<?= $data['id'] ?>" class="btn btn-danger">Delete</a>
                         </div>
                     </td>
                 </tr>
