@@ -10,12 +10,8 @@
     <h2 class="text-center bg-warning py-2">APLIKASI DATA SISWA</h2>
 
     <div class="col-6">
-        <!-- before -->
-        <!-- <form action="update.php" method="POST"> -->
-
-        <!-- after -->
-        <form action="update.php?id=<?= $_GET['id'] ?>" method="POST">
-            <!-- <input type="hidden" name="id" value="<?//= $data->id ?>"> -->
+        <form action="update.php" method="POST">
+            <input type="hidden" name="id" value="<?= $data->id ?>">
             <div class="mb-3">
                 <label>Nama Siswa</label>
                 <input type="text" name="nama_siswa" class="form-control" value="<?= $data->nama_siswa ?>">

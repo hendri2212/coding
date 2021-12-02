@@ -11,17 +11,42 @@
 </head>
 <body class="container">
     <h2 class="text-center bg-warning py-2">APLIKASI DATA SISWA</h2>
-    <div class="mb-3">
-        <a href="index.php" class="bg-danger p-2 mr-2 text-decoration-none text-white">Home</a>
-        <a href="kelas.php" class="bg-danger p-2 mr-2 text-decoration-none text-white">Data Kelas</a>
-        <a href="guru.php" class="bg-danger p-2 mr-2 text-decoration-none text-white">Data Guru</a>
+    <div class="my-3 d-flex justify-content-between">
+        <div>
+            <a href="index.php" class="bg-danger p-2 mr-2 text-decoration-none text-white">Data Siswa</a>
+            <a href="kelas.php" class="bg-danger p-2 mr-2 text-decoration-none text-white">Data Kelas</a>
+        </div>
+        <div>
+            <a href="login.php" class="bg-success p-2 mr-2 text-decoration-none text-white">Login</a>
+        </div>
     </div>
 
     <?php
         include "./config.php";
-        $query = mysqli_query($koneksi, 'SELECT data_siswa.id, nama_siswa, nama_kelas, no_hp, alamat FROM data_siswa JOIN data_kelas ON data_siswa.kelas_id = data_kelas.id') ?>
+        if (isset($_POST['search'])) {
+            $query = mysqli_query($koneksi,
+            'SELECT data_siswa.id, nama_siswa, nama_kelas, no_hp, alamat 
+            FROM data_siswa JOIN data_kelas ON data_siswa.kelas_id = data_kelas.id
+            WHERE nama_siswa or alamat LIKE "%'.$_POST["search"].'%"');
+        } else {
+            $query = mysqli_query($koneksi,
+            'SELECT data_siswa.id, nama_siswa, nama_kelas, no_hp, alamat 
+            FROM data_siswa JOIN data_kelas ON data_siswa.kelas_id = data_kelas.id');
+        } ?>
 
-        <a href="input.php" class="btn btn-info">Data Baru</a> <br><br>
+        <div class="d-flex justify-content-between mb-3">
+            <div class="col">
+                <a href="input.php" class="btn btn-info">Data Baru</a>
+            </div>
+            <div class="col-4">
+                <form action="" method="POST">
+                    <div class="input-group">
+                        <input type="text" name="search" placeholder="Type me here" class="form-control">
+                        <input type="submit" value="Search" class="btn btn-outline-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
         <table class="table table-bordered">
             <thead>
                 <tr>
